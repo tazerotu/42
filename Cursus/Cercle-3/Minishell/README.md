@@ -22,6 +22,8 @@
 
 [Gitlab repository of madebypixel02 with guide (has colors in output)](https://gitlab.com/madebypixel02/minishell)
 
+[Stack Overflow question on redirection and pipe precedence](https://stackoverflow.com/questions/12942042/pipe-redirection-precedence)
+
 ## Miscellaneous Guides
 
 [Git Branching](https://learngitbranching.js.org/)

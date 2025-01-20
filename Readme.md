@@ -1,3 +1,1 @@
-- **[Piscine](https://github.com/tazerotu/42-School/tree/main/Piscine/):** Before being admitted at 42
- 
-- **[Cursus](https://github.com/tazerotu/42-School/tree/main/Cursus/):** Common core of 42
+Minishell exclusive branch. The whole repository will be manually copied into the 42 network folder and this branch is not meant to be merged back into the main one.

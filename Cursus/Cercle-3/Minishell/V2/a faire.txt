@@ -3,11 +3,7 @@ Splice	->
 		int		input;
 		int		output;
 		int		error_output;
-		struct s_splice *cmd;
 		char	**envp;
-
-		->
-	count pipe -> n_pipe -> n_splice -> splicer;
 	
 
 Pipex ->

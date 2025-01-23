@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_exe.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/20 12:55:35 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/23 14:45:35 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/Executor.h"
 
-int main(int argc, char **argv, char **envp)
+//temporary
+static int	pipex_main(char **envp)
 {
-	(void)argc;
-	(void)argv;
 	t_pipe pipe;
 	char *input;
     int i = 0;
 	int j = 0;
+
     system("clear");
     while ( i < 10 )
     {
@@ -36,5 +36,12 @@ int main(int argc, char **argv, char **envp)
 		}
         i++;
     }
-	return(0);
+	return (0);
+}
+
+int main(int argc, char **argv, char **envp)
+{
+	(void) argc;
+	(void) argv;
+	return(pipex_main(envp));
 }

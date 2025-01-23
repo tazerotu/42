@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   incorrect_quotes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:25:59 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/01/23 14:56:47 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:59:16 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ static t_quote	*quote_init(void)
 
 static int	check_simple(t_quote *quote, int i)
 {
-	quote->s_count++;
+	if (quote->d_count % 2 == 0)
+		quote->s_count++;
+	else
+		return (0);
 	if (quote->s_count % 2 == 0
 		&& quote->last_s < quote->last_d
 		&& quote->d_count % 2 != 0)
@@ -37,7 +40,10 @@ static int	check_simple(t_quote *quote, int i)
 
 static int	check_double(t_quote *quote, int i)
 {
-	quote->d_count++;
+	if (quote->s_count % 2 == 0)
+		quote->d_count++;
+	else
+		return (0);
 	if (quote->d_count % 2 == 0
 		&& quote->last_d < quote->last_s
 		&& quote->s_count % 2 != 0)
@@ -46,11 +52,11 @@ static int	check_double(t_quote *quote, int i)
 	return (0);
 }
 /*
-** Returns 1 if quotes are incorrect, 0 otherwise.
-** Incorrect includes quotes opening but not ending,
-** and when a type of quotes between simple and double
-** opens after the other type opened
-** but also ends after the other type closed.
+* Returns 1 if quotes are incorrect, 0 otherwise.
+* Incorrect is defined as quotes opening but not ending.
+* Opening quotes of a type (between simple and double)
+* has the effect of not interpreting quotes of the other type
+* until the first type closes.
 */
 int	check_incorrect_quotes(char *input)
 {

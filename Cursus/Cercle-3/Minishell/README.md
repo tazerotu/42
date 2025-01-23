@@ -20,6 +20,8 @@
 
 [Github repository of DimitriDaSilva with guide including links](https://github.com/DimitriDaSilva/42_minishell)
 
+[Github repository of jdecorte-be with guide](https://github.com/jdecorte-be/42-minishell/blob/master/README.md)
+
 [Gitlab repository of madebypixel02 with guide (has colors in output)](https://gitlab.com/madebypixel02/minishell)
 
 [Stack Overflow question on redirection and pipe precedence](https://stackoverflow.com/questions/12942042/pipe-redirection-precedence)
@@ -33,6 +35,8 @@
 [Shell Command Language](https://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html)
 
 [Bash Reference Manual](https://www.gnu.org/software/bash/manual/bash.html)
+
+[Stack Overflow question on bash's parsing order](https://stackoverflow.com/questions/54160869/in-what-order-does-bash-parser-escape-characters-and-split-words-tokens-within-c)
 
 ## Testers
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_parser.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:12 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/01/23 14:56:00 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:45:43 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static int	parser_main(void)
 	return (0);
 }
 */
+
 void	test_quotes(void)
 {
 	char	str1[] = "je \'ne\' marche\" pas\' \"du\' tout";
@@ -51,6 +52,7 @@ void	test_quotes(void)
 	char	str4[] = "je \'suis\" sense\" marcher, \'hein?";
 	char	str5[] = "je \"marche \":D";
 	char	str6[] = "je \'marche \':)";
+	char	str7[] = "en \"fait je \'marche! \":o";
 
 	printf("%i; %s\n", check_incorrect_quotes(str1), str1);
 	printf("%i; %s\n", check_incorrect_quotes(str2), str2);
@@ -58,10 +60,14 @@ void	test_quotes(void)
 	printf("%i; %s\n", check_incorrect_quotes(str4), str4);
 	printf("%i; %s\n", check_incorrect_quotes(str5), str5);
 	printf("%i; %s\n", check_incorrect_quotes(str6), str6);
+	printf("%i; %s\n", check_incorrect_quotes(str7), str7);
 }
 
-int main(void)
+int main(int argc, char **argv, char **envp)
 {
+	(void) argc;
+	(void) argv;
+	(void) envp;
 	//return (parser_main());
 	test_quotes();
 }

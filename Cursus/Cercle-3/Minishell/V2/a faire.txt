@@ -14,15 +14,30 @@ Pipex ->
 
 Lexer (assigned to laicar) ->
 	read line
-	check simple/double quotes correct (opening with ending, no mix of type eg "'"' although "''" is ok), else error
-	expand: replace environment variables (eg $USER, except if between simple quotes. If not found give empty string, also handle $?)
+✓	check simple/double quotes correct (opening with ending, no mix of type eg "'"' although "''" is ok), else error
 	trim spaces outside quotes
-	split into different words (can be empty string if eg "", but hola"   ciao     "bonjour is 1 word)
+	expand: replace environment variables (eg $USER, except if between simple quotes. If not found give empty string, also handle $?)
+	split into different words (can be empty string if eg "", but hola"   ciao     "bonjour is 1 word without quotes)
+	/!\ quotes resulting from expansion aren't removed
 	split again according to < > << >> |. If multiple (eg <<<<, <> and 2>&1 are not supported) or following token isn't an alphanumeric (?) word -> error
 	do not interpret ; and \ as special characters
 	last token is NULL
 	output: char **prompt_str;
-	if nothing is actually in the prompt... handle it at some point
+	if nothing is actually in the prompt (neither redirections nor commands/arguments)... handle it at some point
+
+Examples:
+export MYVAR=hohoho
+echo "'$MYVAR'"
+'hohoho'
+
+export MYVAR='ho"'
+echo $MYVAR
+ho"
+
+export MYVAR="cho 'ceci est' un "
+e$MYVAR reblochon
+'ceci est' un reblochon
+
 
 Parser (assigned to laicar) ->
 	typedef struct s_command
@@ -45,3 +60,4 @@ Misc. ->
 	check if first token of subgroup is a command or redirection, else -> error
 	for each cmd args check 1st word of args, if supported builtin command (then NULL), or absolute path (then directly into cmd_path), or relative path (use PATH environment variable to look for it)
 
+exit | exit doesn't exit (idk why)

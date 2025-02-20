@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   ft_dblstinsert.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 12:07:03 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/02/20 18:17:52 by clai-ton         ###   ########.fr       */
+/*   Created: 2024/10/07 18:17:34 by clai-ton          #+#    #+#             */
+/*   Updated: 2025/02/20 18:27:21 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Includes/lexer_parser.h"
+#include "../libft.h"
 
-t_cmd	*process_line(char *input)
+void	ft_dblstinsert_before(t_dblst *lst_node, t_dblst *new)
 {
-	t_list	**tok_lst;
+	t_dblst	*tmp;
 
-	if (check_incorrect_quotes(input))
-		return (NULL);
-	tok_lst = ft_tokenize_1(input);
-	trim_spaces(tok_lst);
-	replace_var(tok_lst);
-	//todo
-	ft_lstclear(tok_lst, del_token_1);
-	return (NULL);
+	tmp = lst_node->prev;
+	lst_node->prev = new;
+	tmp->next = new;
+	new->prev = tmp;
+	new->next = lst_node;
+}
+
+void	ft_dblstinsert_after(t_dblst *lst_node, t_dblst *new)
+{
+	t_dblst	*tmp;
+
+	tmp = lst_node->next;
+	lst_node->next = new;
+	tmp->prev = new;
+	new->next = tmp;
+	new->prev = lst_node;
 }

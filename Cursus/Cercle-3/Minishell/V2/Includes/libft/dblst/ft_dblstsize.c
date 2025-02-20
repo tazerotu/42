@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   ft_dblstsize.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 12:07:03 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/02/20 18:17:52 by clai-ton         ###   ########.fr       */
+/*   Created: 2024/10/07 18:12:39 by clai-ton          #+#    #+#             */
+/*   Updated: 2025/02/20 18:27:26 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Includes/lexer_parser.h"
+#include "../libft.h"
 
-t_cmd	*process_line(char *input)
+int	ft_dblstsize(t_dblst *lst)
 {
-	t_list	**tok_lst;
+	int	i;
 
-	if (check_incorrect_quotes(input))
-		return (NULL);
-	tok_lst = ft_tokenize_1(input);
-	trim_spaces(tok_lst);
-	replace_var(tok_lst);
-	//todo
-	ft_lstclear(tok_lst, del_token_1);
-	return (NULL);
+	if (!lst)
+		return (0);
+	i = 1;
+	while (lst->next)
+	{
+		i++;
+		lst = lst->next;
+	}
+	return (i);
 }

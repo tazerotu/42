@@ -6,7 +6,7 @@
 #    By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/01/23 15:17:00 by clai-ton         ###   ########.fr        #
+#    Updated: 2025/02/20 19:42:46 by clai-ton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ SRCS_INIT =		./srcs/Init/Init.c
 #SRCS_PIPEX =	
 
 SRCS_PARSE = 	./srcs/main_parser.c \
-				./srcs/lexer/incorrect_quotes.c
+				./srcs/lexer/incorrect_quotes.c \
+				./srcs/lexer/process_token.c \
+				./srcs/lexer/tokenizer_1.c
 
 EXE_SOURCES =		${SRC} ${SRCS_INIT}
 PARSE_SOURCES =		${SRCS_PARSE}
@@ -41,7 +43,7 @@ CLEAKS = -fsanitize=address -g
 %.o:		%.c
 		${CC} ${CFLAGS} -c $? -o $@
 
-all:		${EXE}
+all:		${PARSE}
 
 ${EXE}:		${EXE_OBJECTS} 
 		@${MAKE} --silent -C ${LIBFT}
@@ -49,7 +51,7 @@ ${EXE}:		${EXE_OBJECTS}
 
 ${PARSE}:		${PARSE_OBJECTS}
 		@${MAKE} --silent -C ${LIBFT}
-		@${CC} ${CFLAGS} ${PARSE_OBJECTS} ./Includes/libft/libft.a -lreadline -o $@
+		@${CC} ${CFLAGS} ${CLEAKS} ${PARSE_OBJECTS} ./Includes/libft/libft.a -lreadline -o $@
 
 ac: all clean
 

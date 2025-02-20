@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   ft_dblstnew.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 12:29:17 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/01/23 15:18:40 by clai-ton         ###   ########.fr       */
+/*   Created: 2024/10/07 18:04:57 by clai-ton          #+#    #+#             */
+/*   Updated: 2025/02/20 18:27:24 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Includes/lexer_parser.h"
+#include "../libft.h"
 
-t_list	*parse_line(char *input)
+t_dblst	*ft_dblstnew(void *content)
 {
-	t_list	*cmds;
-	char	*processed_input;
+	t_dblst	*new;
 
-	processed_input = process_line(input);
-	return (NULL);
+	new = malloc(sizeof(t_dblst));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	new->prev = NULL;
+	return (new);
 }

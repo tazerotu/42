@@ -79,11 +79,17 @@ SRC_FT_FPRINTF =	./ft_fprintf/ft_fprintf.c	\
 					./ft_fprintf/src/ft_putstr.c	\
 					./ft_fprintf/src/ft_putunbr.c	\
 
-
+SRC_DBLST =	./dblst/ft_dblstadd.c \
+			./dblst/ft_dblstclear.c \
+			./dblst/ft_dblstdel.c \
+			./dblst/ft_dblstget.c \
+			./dblst/ft_dblstinsert.c \
+			./dblst/ft_dblstnew.c \
+			./dblst/ft_dblstsize.c
 
 # SRC_OTHER = 
 
-SRCSALL = ${SRC_BOOL} ${SRC_LST} ${SRC_MEM} ${SRC_PUT} ${SRC_STR} ${SRC_TO} ${SRC_FT_PRINTF} ${SRC_FT_FPRINTF}
+SRCSALL = ${SRC_BOOL} ${SRC_LST} ${SRC_MEM} ${SRC_PUT} ${SRC_STR} ${SRC_TO} ${SRC_FT_PRINTF} ${SRC_FT_FPRINTF} ${SRC_DBLST}
 
 OBJS = ${SRCSALL:.c=.o}
 

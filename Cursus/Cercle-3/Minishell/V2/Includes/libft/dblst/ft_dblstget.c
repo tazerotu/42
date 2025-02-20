@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   ft_dblstget.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 12:07:03 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/02/20 18:17:52 by clai-ton         ###   ########.fr       */
+/*   Created: 2025/01/24 16:04:28 by clai-ton          #+#    #+#             */
+/*   Updated: 2025/02/20 18:27:19 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Includes/lexer_parser.h"
+#include "../libft.h"
 
-t_cmd	*process_line(char *input)
+t_dblst	*ft_dblstlast(t_dblst *lst)
 {
-	t_list	**tok_lst;
-
-	if (check_incorrect_quotes(input))
+	if (!lst)
 		return (NULL);
-	tok_lst = ft_tokenize_1(input);
-	trim_spaces(tok_lst);
-	replace_var(tok_lst);
-	//todo
-	ft_lstclear(tok_lst, del_token_1);
-	return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
+
+t_dblst	*ft_dblstfirst(t_dblst *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->prev)
+		lst = lst->prev;
+	return (lst);
 }

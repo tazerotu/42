@@ -44,8 +44,8 @@ Parser (assigned to laicar) ->
 	{
 		char	**redir_tok; //includes redirection symbols and their one following token in order, eg ">" "a" "<" "file.txt" ">" "b". Ends with NULL.
 		char	**arg_tok; //includes everything after stripping redirections. Includes command name/given path. Ends with NULL.
+		struct s_command	*next;
 	}	t_cmd;
-	do a t_list *prompt_cmds containing different t_cmd in the main structure (they are separated by pipes)
 	check if last token is a pipe -> error
 
 Redirections/pipes

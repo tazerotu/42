@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:04:47 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/02/20 18:25:30 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/02/27 15:03:12 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,7 @@ char	*process_line(char *input);
 t_list	**ft_tokenize_1(char *input);
 void	del_token_1(void *tok);
 char	*ft_trim_token(char *src);
+void	trim_spaces(t_list **tok_lst);
+void	replace_var(t_list **tok_lst);
 
 #endif

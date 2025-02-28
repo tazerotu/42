@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:12 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/02/20 19:51:19 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/02/28 18:07:25 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,48 +64,35 @@ void	test_quotes(void)
 }
 */
 /*
-void	test_trim(void)
-{
-	char	str1[] = "    test debut";
-	char	str2[] = "test fin   ";
-	char	str3[] = "test       milieu";
-	char	str4[] = "     test   all    ";
-
-	printf("debut: %s\n", ft_trim_token(str1));
-	printf("fin: %s\n", ft_trim_token(str2));
-	printf("milieu: %s\n", ft_trim_token(str3));
-	printf("all: %s\n", ft_trim_token(str4));
-}
-*/
-
 void	test_tokenizer_1_helper(char *src, char *idx)
 {
 	t_list **tok_lst;
 	t_list *cur;
+	t_list *next;
 	t_tok *tok;
 
 	printf("\n%s:\n", idx);
 	tok_lst = ft_tokenize_1(src);
-//printf("tok_lst: %p\n", tok_lst);
 	cur = *tok_lst;
-//printf("cur: %p\n", cur);
 	while (cur)
 	{
+		next = cur->next;
 		if (cur->content)
 		{
-//printf("content: %p\n", cur->content);
 			tok = (t_tok *) cur->content;
-			printf("%s\n", tok->str);
+			printf("str: %s\n", tok->str);
 		}
-		cur = cur->next;
+		ft_lstdelone(cur, del_token_1);
+		cur = next;
 	}
-	ft_lstclear(tok_lst, del_token_1);
 }
-
+*/
+/*
 void	test_tokenizer_1(void)
 {
+	char	str3[] = "";
+	test_tokenizer_1_helper(str3, "3");
 	char	str2[] = "test   without";
-	//char	str3[] = "";//this one has yet to work
 	char	str1a[] = "'  simplestart  'test simple + without";
 	char	str1b[] = "test simple + without'  simpleend  '";
 	char	str1c[] = "test '  simplemid  'simple + without";
@@ -116,9 +103,7 @@ void	test_tokenizer_1(void)
 	char	str5b[] = "test'simple'\"double\"";
 	char	str5c[] = "\"double\"'simple'test";
 	char	str5d[] = "'simple'\"double\"test";
-	
 	test_tokenizer_1_helper(str2, "2");
-//	test_tokenizer_1_helper(str3, "3");
 	test_tokenizer_1_helper(str1a, "1a");
 	test_tokenizer_1_helper(str1b, "1b");
 	test_tokenizer_1_helper(str1c, "1b");
@@ -130,14 +115,94 @@ void	test_tokenizer_1(void)
 	test_tokenizer_1_helper(str5c, "5c");
 	test_tokenizer_1_helper(str5d, "5d");
 }
-
-int main(int argc, char **argv, char **envp)
+*/
+/*
+void	test_trim_helper(char *str, char *idx)
 {
-	(void) argc;
-	(void) argv;
-	(void) envp;
+	t_list **tok_lst;
+	t_list *cur;
+	t_list *next;
+	t_tok *tok;
+
+	printf("\n%s:\n", idx);
+	tok_lst = ft_tokenize_1(str);
+	trim_spaces(tok_lst);
+	cur = *tok_lst;
+	while (cur)
+	{
+		next = cur->next;
+		if (cur->content)
+		{
+			tok = (t_tok *) cur->content;
+			printf("str: %s\n", tok->str);
+		}
+		ft_lstdelone(cur, del_token_1);
+		cur = next;
+	}
+}
+*/
+/*
+void	test_trim(void)
+{
+	char	str2[] = "test   no  quote";
+	char	str1a[] = "'  simplestart  'test   simple + without  ";
+	char	str4b[] = "test double    +  without\"  doubleend  \"";
+
+	test_tokenizer_1_helper(str2, "2");
+	test_trim_helper(str2, "2");
+	test_tokenizer_1_helper(str1a, "1a");
+	test_trim_helper(str1a, "1a");
+	test_tokenizer_1_helper(str4b, "4b");
+	test_trim_helper(str4b, "4b");
+}
+*/
+
+void	test_var_helper(char *str, char *idx)
+{
+	t_list **lst;
+	t_list *cur;
+	t_list *next;
+	t_tok *tok;
+
+	printf("string %s: %s\n", idx, str);
+	lst = ft_tokenize_1(str);
+	replace_var(lst);
+	cur = *lst;
+	while (cur)
+	{
+		next = cur->next;
+		tok = (t_tok *) cur->content;
+		printf("post-replace: %s\n", tok->str);
+		ft_lstdelone(cur, del_token_1);
+		cur = next;
+	}
+}
+
+void	test_var(void)
+{
+	char	str1[] = "$USER is the user";
+	char	str2[] = "The user is: $USER";
+	char	str3[] = "Now, where is $USER? In the middle!";
+	char	str4[] = "$USER";
+	char	str5[] = "'$USER'";
+	char	str6[] = "\"$USER\"";
+	char	str7[] = "$PATH$USER";
+
+	test_var_helper(str3, "3");
+	test_var_helper(str1, "1");
+	test_var_helper(str2, "2");
+	test_var_helper(str4, "4");
+	test_var_helper(str5, "5");
+	test_var_helper(str6, "6");
+	test_var_helper(str7, "7");
+}
+
+int main(void)
+{
 	//return (parser_main());
 	//test_quotes();
 	//test_trim();
-	test_tokenizer_1();
+	//test_tokenizer_1();
+	//test_trim();
+	test_var();
 }

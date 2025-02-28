@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_token.c                                    :+:      :+:    :+:   */
+/*   trim_token.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 17:05:10 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/02/20 18:28:23 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/02/27 16:35:41 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ char	*ft_trim_token(char *src)
 	if (ft_strlen(src) == dest_size - 1)
 		return (NULL);
 	dest = malloc(dest_size * sizeof(char));
-	
 	while (src[src_i])
 	{
 		while (src[src_i] && src[src_i] == ' ')
@@ -88,9 +87,4 @@ void	trim_spaces(t_list	**tok_lst)
 		}
 		cur_lst = cur_lst->next;
 	}
-}
-
-void	replace_var(t_list	**tok_lst)
-{
-	(void) tok_lst;
 }

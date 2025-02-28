@@ -53,6 +53,7 @@ SRC_STR =	./str/ft_strlcat.c \
 			./str/ft_strnstr.c \
 			./str/ft_substr.c \
 			./str/ft_strjoin.c \
+			./str/ft_strjoin_multi.c \
 			./str/ft_split.c\
 			./str/ft_strtrim_V2.c \
 			./str/ft_strmapi.c \

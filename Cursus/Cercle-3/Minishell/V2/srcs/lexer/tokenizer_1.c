@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:47:25 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/02/20 19:43:09 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/02/27 14:51:22 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	del_token_1(void *tok_void)
 	tok = (t_tok *) tok_void;
 	free(tok->str);
 	free(tok);
-	tok = NULL;
 }
 
 static t_tok	*create_tok_quote(char *input, int *i, char quote_char)
@@ -96,7 +95,6 @@ t_list	**ft_tokenize_1(char *input)
 	dummy_node = ft_lstnew(dummy_tok);
 	tok_lst = &dummy_node;
 	ft_tokenize_1_loop(input, tok_lst);
-//printf("dummy:%p\nnext:%p\n", dummy_node->content, dummy_node->next->content);
 	if (dummy_node->next)
 	{
 		tok_lst = &(dummy_node->next);

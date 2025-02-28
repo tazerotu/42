@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 09:52:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/24 16:13:37 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/02/28 17:31:10 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -378,6 +378,8 @@ void				*ft_calloc(size_t nmemb, size_t size);
 /*----------------------*/
 /*          BONUS       */
 /*----------------------*/
+
+//Linked List
 typedef struct s_list
 {
 	void			*content;
@@ -471,7 +473,6 @@ int					ft_fprintf(int fd, char *format, ...);
 int					ft_printf(const char *format, ...);
 
 // DOUBLE LINKED LIST
-
 typedef struct s_double_list
 {
 	void					*content;
@@ -493,5 +494,8 @@ t_dblst				*ft_dblstlast(t_dblst *lst);
 void				ft_dblstinsert_before(t_dblst *lst_node, t_dblst *new);
 void				ft_dblstinsert_after(t_dblst *lst_node, t_dblst *new);
 int					ft_dblstsize(t_dblst *lst);
+
+//EXTRA
+char				*ft_strjoin_multi(int size, char **strs, char *sep);
 
 #endif
